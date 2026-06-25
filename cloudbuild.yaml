@@ -18,3 +18,6 @@ steps:
     - 'me-central1'
 images:
 - 'me-central1-docker.pkg.dev/portfolio-project-500120/builds-repo/angular-homepage-ssr/nghomepage-ng-ssr:$COMMIT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
