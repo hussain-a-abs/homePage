@@ -1,7 +1,7 @@
 steps:
 # Build the image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', "--legacy-peer-deps", '-t', 'me-central1-docker.pkg.dev/portfolio-project-500120/builds-repo/angular-homepage-ssr/nghomepage-ng-ssr-preview:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'me-central1-docker.pkg.dev/portfolio-project-500120/builds-repo/angular-homepage-ssr/nghomepage-ng-ssr-preview:$COMMIT_SHA', '.']
 # Push the image to Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'me-central1-docker.pkg.dev/portfolio-project-500120/builds-repo/angular-homepage-ssr/nghomepage-ng-ssr-preview:$COMMIT_SHA']
