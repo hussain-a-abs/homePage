@@ -1,48 +1,164 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-page-bg: #0f0f1f;
+  --color-page-bg:        #0f0f1f;
+  --color-surface-base:   #16162a;
+  --color-surface-raised: #1e1e34;
+  --color-surface-hero:   #1a1a2e;
 
-    --color-hero-bg: #1a1a2e;
-    --color-hero-border: #2a2a40;
-    --color-hero-text: #e2e8f0;
-    --color-hero-muted: #64748b;
+  --color-border-base:    #252540;
+  --color-border-raised:  #2a2a44;
+  --color-border-hero:    #2a2a40;
+  --color-border-accent:  #2a3a54;
+  --color-border-subtle:  #1e1e34;
+  --color-border-danger:  #2a1428;
 
-    --color-accent: #7eb8f7;
-    --color-accent-dim: #1e2d4a;
-    --color-accent-muted: #94a3b8;
+  --color-accent:         #7eb8f7;
+  --color-accent-dim:     #1e2d4a;
+  --color-accent-muted:   #94a3b8;
 
-    --color-tile-bg: #383861;
-    --color-tile-border: #3e3e61;
-    
-    --color-tile-text: #e2e8f0;
+  --color-text-base:      #c4cce0;
+  --color-text-heading:   #e2e8f0;
+  --color-text-dim:       #64748b;
+  --color-text-faint:     #3a3a5c;
+  --color-text-ghost:     #2a2a4a;
 
-    --color-pill-blue-bg: #dbeafe;
-    --color-pill-blue-text: #1e3a8a;
-    --color-pill-purple-bg: #ede9fe;
-    --color-pill-purple-text: #3730a3;
+  --color-danger:         #a75c7e;
+  --color-danger-bg:      #1a0e18;
 
-    --radius-tile: 10px;
+  --color-pill-blue-bg:     #dbeafe;
+  --color-pill-blue-text:   #1e3a8a;
+  --color-pill-purple-bg:   #ede9fe;
+  --color-pill-purple-text: #3730a3;
 
-    /* github activity color defs */
-    --color-contribution-0: #1e1e34;
-    --color-contribution-1: #1e2d4a;
-    --color-contribution-2: #378add;
-    --color-contribution-3: #7eb8f7;
+  /* stack pills */
+  --color-pill-blue-bg:     #dbeafe;
+--color-pill-blue-text:   #1e3a8a;
+--color-pill-purple-bg:   #ede9fe;
+--color-pill-purple-text: #3730a3;
+--color-pill-teal-bg:     #ccfbf1;
+--color-pill-teal-text:   #134e4a;
+--color-pill-amber-bg:    #fef3c7;
+--color-pill-amber-text:  #78350f;
 
+--color-pill-dark-blue-bg:    #1e2d4a;
+--color-pill-dark-blue-text:  #7eb8f7;
+--color-pill-dark-purple-bg:  #1e1a3a;
+--color-pill-dark-purple-text:#a78bfa;
+--color-pill-dark-teal-bg:    #0e2a24;
+--color-pill-dark-teal-text:  #5dcaa5;
+--color-pill-dark-amber-bg:   #2a1e0e;
+--color-pill-dark-amber-text: #e8a060;
 
+  --color-dot-1: #7eb8f7;
+  --color-dot-2: #a78bfa;
+  --color-dot-3: #5dcaa5;
+  --color-dot-4: #e8a060;
+
+  --color-contribution-0: #1e1e34;
+  --color-contribution-1: #1e2d4a;
+  --color-contribution-2: #378add;
+  --color-contribution-3: #7eb8f7;
+
+  --radius-tile: 10px;
 }
 
 .bento-grid {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 1.4fr 1fr;
-    grid-template-areas:
-        "hero       projects"
-        "certs      stack"
-        "github     github"
-        "learning   learning" /* <- not used */
-        "uptime     localTime"
-        "contact    resume";
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
+.bento-hero {
+  grid-column: span 2;
+}
+
+@layer components {
+
+  /* ── text scale ── */
+  .text-heading    { @apply text-[19px] font-medium text-text-heading; }
+  .text-subheading { @apply text-[13px] font-medium text-text-base; }
+  .text-body       { @apply text-[12px] text-text-base; }
+  .text-caption    { @apply text-[11px] text-text-dim; }
+  .text-label      { @apply text-[10px] uppercase tracking-widest text-text-faint; }
+  .text-muted      { @apply text-[11px] text-text-faint; }
+  .text-accent-sm  { @apply text-[11px] text-accent; }
+
+  /* ── surfaces ── */
+  .surface-page   { @apply bg-page-bg; }
+  .surface-base   { @apply bg-surface-base border border-border-base; }
+  .surface-raised { @apply bg-surface-raised border border-border-raised; }
+  .surface-hero   { @apply bg-surface-hero border border-border-hero; }
+  .surface-input  { @apply bg-page-bg border border-border-base; }
+  .surface-accent { @apply bg-accent-dim border border-border-accent; }
+
+  /* ── dividers ── */
+  .divider        { @apply border-border-base; }
+  .divider-subtle { @apply border-border-subtle; }
+
+  /* ── admin inputs ── */
+  .admin-input,
+  .admin-textarea {
+    @apply w-full bg-page-bg border border-border-base rounded-md
+           text-[12px] text-text-base px-2.5 py-1.5
+           placeholder-text-ghost outline-none
+           focus:border-accent transition-colors;
+  }
+
+  .admin-textarea { resize: none; }
+
+  .admin-label { @apply text-[11px] text-text-dim; }
+  .admin-field { @apply flex flex-col gap-1.5; }
+
+  /* ── admin buttons ── */
+  .admin-btn-primary {
+    @apply text-[11px] text-accent px-3.5 py-1.5
+           bg-accent-dim border border-border-accent
+           rounded-md cursor-pointer
+           hover:brightness-110 transition-all;
+  }
+
+  .admin-btn-ghost {
+    @apply text-[11px] text-accent px-3.5 py-1.5
+           bg-transparent border border-border-accent
+           rounded-md cursor-pointer
+           hover:bg-accent-dim transition-colors;
+  }
+
+  .admin-btn-danger {
+    @apply p-1.5 bg-transparent
+           border border-border-danger
+           rounded-md text-danger cursor-pointer
+           hover:bg-danger-bg transition-colors;
+  }
+
+  .admin-btn-toggle {
+    @apply flex-1 flex items-center justify-center gap-1.5
+           text-[11px] text-text-faint py-1.5 rounded-md
+           border border-border-base
+           bg-page-bg cursor-pointer
+           hover:border-border-accent transition-colors;
+  }
+
+  .admin-btn-toggle-active {
+    @apply flex-1 flex items-center justify-center gap-1.5
+           text-[11px] text-accent py-1.5 rounded-md
+           border border-border-accent
+           bg-accent-dim cursor-pointer;
+  }
+
+}
+
+i-tabler {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em !important;
+  height: 1em !important;
+}
+
+i-tabler svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
