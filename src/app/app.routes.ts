@@ -6,6 +6,6 @@ export const routes: Routes = [
     // { path: "admin", loadComponent: () => import('./_components/admin/admin').then(m => m.Admin), canActivate: [authGuard] },
     { path: "admin", loadComponent: () => import('./_components/admin/admin').then(m => m.Admin), }, //removed guard for dev
 
-    { path: 'project', loadComponent: () => import('./_components/project/project').then(m => m.Project) },
+    { path: 'project/:urlSlug', loadComponent: () => import('./_components/project-component/project-component').then(m => m.ProjectComponent) },
 
 ];

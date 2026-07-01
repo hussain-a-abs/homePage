@@ -24,7 +24,8 @@ export class ProjectForm implements OnInit {
     subtitle: "",
     description: "",
     displayType: 'writeup',
-    id: ""
+    id: "",
+    isLive: false,
   };
   @Output() onDelete = new EventEmitter<void>();
   @Output() onSave = new EventEmitter<Partial<Project>>();

@@ -20,7 +20,7 @@ export interface Project {
     subtitle?: string;
     description?: string;
     urlSlug?: string;
-
+    isLive: boolean;
 }
 
 export interface Certification {
