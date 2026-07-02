@@ -2,7 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { FirebaseService } from './firebase-service';
 import { collection, DocumentReference, DocumentSnapshot, getDoc, getDocs, query, Timestamp, where } from 'firebase/firestore';
 import { FIRESTORE_CONSTANTS } from './constants';
-import { Availability, Certification, Chip, Project } from './models';
+import { Availability, Certification, Chip, HeroTileInfo, Project } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,15 @@ export class DataService {
   public stackChips = signal<Chip[] | null>(null);
   public certs = signal<Certification[] | null>(null);
   public availability = signal<Availability | null>(null);
+  public info = signal<HeroTileInfo | null>(null);
+
+  constructor(){
+    this.fetchAvailability();
+    this.fetchCerts();
+    this.fetchHeroInfo();
+    this.fetchProjects();
+    this.fetchStackChips();
+  }
 
   async fetchProjects() {
     const collectionRef = collection(this.fb.firestore, FIRESTORE_CONSTANTS.PROJECTS_COLLECTION);
@@ -75,7 +84,7 @@ export class DataService {
     const q = query(collectionRef);
     const doc = (await getDocs(q)).docs[0];
 
-    this.availability.set({ ...doc.data(), id: doc.id } as unknown as Availability);
+    this.availability.set({ ...doc.data(), id: doc.id } as Availability);
 
   }
 
@@ -84,6 +93,13 @@ export class DataService {
     const q = query(collectionRef, where('urlSlug', '==', slug));
     const snapshot = await getDocs(q);
     return (snapshot.empty) ? null : { ...snapshot.docs[0].data(), id: snapshot.docs[0].id } as Project;
+  }
+
+  async fetchHeroInfo(){
+    const collectionRef = collection(this.fb.firestore, FIRESTORE_CONSTANTS.HERO_INFO_COLLECTION);
+    const q = query(collectionRef);
+    const doc = (await getDocs(q)).docs[0];
+    this.info.set({...doc.data(), id: doc.id} as HeroTileInfo);
   }
 
 }

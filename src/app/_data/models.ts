@@ -39,3 +39,9 @@ export interface Availability {
     roles: string[]
     location: string;
 }
+
+export interface HeroTileInfo {
+    id: string;
+    title: string;
+    description: string;
+}

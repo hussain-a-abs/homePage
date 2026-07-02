@@ -4,4 +4,5 @@ export const FIRESTORE_CONSTANTS = {
     CERTS_COLLECTION: "certsTile",
     STACK_COLLECTION: "stackTile",
     WORK_AVAILABILITY_COLLECTION: "availabilityTile",
+    HERO_INFO_COLLECTION: "heroTile"
 } as const;

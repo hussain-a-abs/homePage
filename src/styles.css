@@ -66,7 +66,7 @@
 .bento-grid {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 }
 
 .bento-hero {
@@ -86,13 +86,13 @@
 @layer components {
 
   /* ── text scale ── */
-  .text-heading    { @apply text-[19px] font-medium text-text-heading; }
-  .text-subheading { @apply text-[13px] font-medium text-text-base; }
-  .text-body       { @apply text-[12px] text-text-base; }
-  .text-caption    { @apply text-[11px] text-text-dim; }
-  .text-label      { @apply text-[10px] uppercase tracking-widest text-text-faint; }
-  .text-muted      { @apply text-[11px] text-text-faint; }
-  .text-accent-sm  { @apply text-[11px] text-accent; }
+  .text-heading    { @apply text-[21px] font-medium text-text-heading; }
+  .text-subheading { @apply text-[15px] font-medium text-text-base; }
+  .text-body       { @apply text-[14px] text-text-base; }
+  .text-caption    { @apply text-[12px] text-text-dim; }
+  .text-label      { @apply text-[11px] uppercase tracking-widest text-text-faint; }
+  .text-muted      { @apply text-[12px] text-text-faint; }
+  .text-accent-sm  { @apply text-[12px] text-accent; }
 
   /* ── surfaces ── */
   .surface-page   { @apply bg-page-bg; }
@@ -110,26 +110,26 @@
   .admin-input,
   .admin-textarea {
     @apply w-full bg-page-bg border border-border-base rounded-md
-           text-[12px] text-text-base px-2.5 py-1.5
+           text-[14px] text-text-base px-2.5 py-1.5
            placeholder-text-ghost outline-none
            focus:border-accent transition-colors;
   }
 
   .admin-textarea { resize: none; }
 
-  .admin-label { @apply text-[11px] text-text-dim; }
+  .admin-label { @apply text-[12px] text-text-dim; }
   .admin-field { @apply flex flex-col gap-1.5; }
 
   /* ── admin buttons ── */
   .admin-btn-primary {
-    @apply text-[11px] text-accent px-3.5 py-1.5
+    @apply text-[12px] text-accent px-3.5 py-1.5
            bg-accent-dim border border-border-accent
            rounded-md cursor-pointer
            hover:brightness-110 transition-all;
   }
 
   .admin-btn-ghost {
-    @apply text-[11px] text-accent px-3.5 py-1.5
+    @apply text-[12px] text-accent px-3.5 py-1.5
            bg-transparent border border-border-accent
            rounded-md cursor-pointer
            hover:bg-accent-dim transition-colors;
@@ -144,7 +144,7 @@
 
   .admin-btn-toggle {
     @apply flex-1 flex items-center justify-center gap-1.5
-           text-[11px] text-text-faint py-1.5 rounded-md
+           text-[12px] text-text-faint py-1.5 rounded-md
            border border-border-base
            bg-page-bg cursor-pointer
            hover:border-border-accent transition-colors;
@@ -152,7 +152,7 @@
 
   .admin-btn-toggle-active {
     @apply flex-1 flex items-center justify-center gap-1.5
-           text-[11px] text-accent py-1.5 rounded-md
+           text-[12px] text-accent py-1.5 rounded-md
            border border-border-accent
            bg-accent-dim cursor-pointer;
   }
@@ -172,13 +172,12 @@ i-tabler svg {
   height: 100%;
   display: block;
 }
-/* Apply directly to global styles.css or wrap with :host ::vdeep */
+
 .markdown-body {
   color: var(--color-text-base);
   line-height: 1.7;
 }
 
-/* Headings: Spacing completely stripped */
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3 {
@@ -189,14 +188,14 @@ i-tabler svg {
   border-bottom: 1px solid #252540
 }
 
-.markdown-body h2 { font-size: 16px; }
-.markdown-body h3 { font-size: 14px; }
+.markdown-body h2 { font-size: 18px; }
+.markdown-body h3 { font-size: 16px; }
 
 /* Paragraphs & Lists: Margins completely stripped */
 .markdown-body p,
 .markdown-body ul,
 .markdown-body ol {
-  font-size: 12px;
+  font-size: 14px;
   color: #c4cce0;
   margin: 0;
   padding: 0;
@@ -223,7 +222,7 @@ i-tabler svg {
 
 /* Inline Code Elements */
 .markdown-body code:not(pre code) {
-  font-size: 11px;
+  font-size: 13px;
   font-family: var(--font-mono, monospace);
   background: #1e1e34;
   color: #a78bfa;
@@ -231,7 +230,6 @@ i-tabler svg {
   border-radius: 4px;
 }
 
-/* Code Blocks: Intentionally preserved padding and margins */
 .markdown-body pre {
   background: #1e1e34 !important;
   border: 0.5px solid #252540;
@@ -242,7 +240,7 @@ i-tabler svg {
 }
 
 .markdown-body pre code {
-  font-size: 12px;
+  font-size: 14px;
   font-family: var(--font-mono, monospace);
   background: transparent !important;
   padding: 0;
@@ -258,3 +256,13 @@ i-tabler svg {
 .token.punctuation { color: #64748b; }
 .token.class-name  { color: #7eb8f7; }
 .token.constant    { color: #e8a060; }
+
+
+.markdown-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  /* border-radius: 8px; */
+  /* border: 1px solid #252540; */
+  margin: 1.5rem auto;
+}

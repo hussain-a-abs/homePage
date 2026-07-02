@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Chip } from "../_reusable/chip/chip";
 import { provideTablerIcons, TablerIconComponent } from "angular-tabler-icons";
 import { IconExternalLink } from 'angular-tabler-icons/icons';
+import { DataService } from '../../_data/data-service';
 
 @Component({
   selector: 'app-hero-tile',
@@ -14,4 +15,6 @@ import { IconExternalLink } from 'angular-tabler-icons/icons';
     })
   ]
 })
-export class HeroTile {}
+export class HeroTile {
+  data = inject(DataService);
+}
