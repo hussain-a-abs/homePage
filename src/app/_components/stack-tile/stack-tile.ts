@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DataService } from '../../_data/data-service';
+import { Chip } from "../_reusable/chip/chip";
 
 @Component({
   selector: 'app-stack-tile',
-  imports: [],
+  imports: [Chip],
   templateUrl: './stack-tile.html',
   styleUrl: './stack-tile.css',
 })
-export class StackTile {}
+export class StackTile {
+  data = inject(DataService)
+}

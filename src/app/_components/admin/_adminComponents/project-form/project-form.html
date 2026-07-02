@@ -1,0 +1,53 @@
+<div class="surface-base rounded-tile overflow-hidden">
+  <div class="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-surface-hero transition-colors"
+       (click)="isOpen.update(v => !v)">
+    <span class="text-body font-medium">
+      {{ project.title || "New Project" }}
+    </span>
+    <span class="text-muted">
+      {{ project.id || "" }}
+    </span>
+    <div class="flex items-center gap-2">
+      <button class="admin-btn-danger" type="button" (click)="$event.stopPropagation(); onDelete.emit()" aria-label="Delete project">
+        <i-tabler name="trash" class="w-3.5 h-3.5" />
+      </button>
+      <i-tabler [name]="isOpen() ? 'chevron-up' : 'chevron-down'" class="w-4 h-4 text-text-faint" />
+    </div>
+  </div>
+  @if (isOpen()) {
+    <form [formGroup]="form" class="flex flex-col gap-3 px-4 pb-4 border-t divider">
+      <div class="grid grid-cols-2 gap-2.5 mt-3">
+        <div class="admin-field">
+          <label class="admin-label">Title</label>
+          <input type="text" class="admin-input" formControlName="title" placeholder="Project title" />
+        </div>
+        <div class="admin-field">
+          <label class="admin-label">Subtitle</label>
+          <input type="text" class="admin-input" formControlName="subtitle" placeholder="e.g. Terraform" />
+        </div>
+      </div>
+      <div class="admin-field">
+        <label class="admin-label">Description</label>
+        <textarea class="admin-textarea" rows="2" formControlName="description" placeholder="Describe the project..."></textarea>
+      </div>
+      <div class="admin-field">
+        <label class="admin-label">Display type</label>
+        <div class="flex gap-1.5">
+          <button type="button"
+            [class]="form.controls['displayType'].value === 'writeup' ? 'admin-btn-toggle-active' : 'admin-btn-toggle'"
+            (click)="setDisplayType('writeup')">
+            <i-tabler name="file-text" class="w-3.5 h-3.5" /> Writeup
+          </button>
+          <button type="button"
+            [class]="form.controls['displayType'].value === 'demo' ? 'admin-btn-toggle-active' : 'admin-btn-toggle'"
+            (click)="setDisplayType('demo')">
+            <i-tabler name="player-play" class="w-3.5 h-3.5" /> Demo
+          </button>
+        </div>
+      </div>
+      <div class="flex justify-end">
+        <button class="admin-btn-primary" type="button" (click)="save()">Save</button>
+      </div>
+    </form>
+  }
+</div>

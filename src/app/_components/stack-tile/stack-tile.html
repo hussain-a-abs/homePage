@@ -1,1 +1,8 @@
-<p>stack-tile works!</p>
+<div class="surface-base rounded-tile p-4 flex flex-col gap-3 h-full">
+  <p class="text-label">STACK</p>
+    <div class="flex flex-wrap">
+        @for (chip of data.stackChips(); track $index) {
+        <app-chip [index]="$index">{{chip.name}}</app-chip>
+        }
+    </div>
+</div>

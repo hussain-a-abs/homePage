@@ -8,7 +8,7 @@ import { initializeApp } from 'firebase/app';
 initializeApp({
   apiKey: "AIzaSyBXnz-zWuZ6XTL3IKnWfIedXgG8sSEvpkA",
   authDomain: "portfolio-project-500120.firebaseapp.com",
-  
+  projectId: "portfolio-project-500120",
 });
 
 export const appConfig: ApplicationConfig = {

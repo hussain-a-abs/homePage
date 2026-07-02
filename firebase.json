@@ -1,14 +1,30 @@
 {
-  "hosting": {
-    "public": "public",
-    "rewrites": [
-      {
-        "source": "**",
-        "run": {
-          "serviceId": "nghomepage-ng-ssr",
-          "region": "me-central1"
+  "hosting": [
+    {
+      "site": "portfolio-project-500120",
+      "public": "public",
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "nghomepage-ng-ssr",
+            "region": "me-central1"
+          }
         }
-      }
-    ]
-  }
+      ]
+    },
+    {
+      "site": "preview-hussainabs",
+      "public": "public",
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "nghomepage-ng-ssr-preview",
+            "region": "me-central1"
+          }
+        }
+      ]
+    }
+  ]
 }

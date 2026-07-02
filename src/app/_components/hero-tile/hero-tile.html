@@ -1,24 +1,23 @@
-<div class="bg-hero-bg border border-hero-border rounded-tile p-4 flex flex-col gap-3 h-full">
-  <h1 class="text-hero-text text-xl font-medium leading-tight">
-    Husain Alabdulsalam
+<div class="surface-hero rounded-tile p-4 flex flex-col gap-3 h-full">
+  <h1 class="text-heading leading-tight">
+    Hussain Alabdulsalam
   </h1>
-  <p class="text-hero-muted text-xs ">Cloud engineer · Khobar, SA</p>
-  <div class=" ">
-    <app-chip [variant]="'dark'" [color]="'blue'">GCP</app-chip>
-    <app-chip [variant]="'light'">Angular</app-chip>
-    <app-chip>Node.js</app-chip>
-
-  </div>
-  <div class="">
-    <button
-      class="text-accent border border-accent-dim text-[11px] me-1 px-3 py-1 rounded-md hover:bg-accent-dim transition-colors cursor-pointer mt-2">
-      Resume
-    </button>
-    <button
-      class="text-accent border border-accent-dim text-[11px] px-3 py-1 rounded-md hover:bg-accent-dim transition-colors cursor-pointer mt-2">
+  <p class="text-caption">{{data.info()?.title}}</p>
+  <!-- <div class="flex flex-wrap gap-1.5">
+    <app-chip [variant]="'dark'" [index]="0">GCP</app-chip>
+    <app-chip [variant]="'dark'" [index]="1">Angular</app-chip>
+    <app-chip [variant]="'dark'" [index]="2">Node.js</app-chip>
+  </div> -->
+  <p class="text-caption">{{data.info()?.description}}</p>
+  <div class="flex gap-2 mt-auto">
+    <a class="admin-btn-ghost inline-flex items-center gap-1" target="_blank"
+      href="https://www.linkedin.com/in/hussain-alabdulsalam/">
+      LinkedIn
+      <i-tabler name="external-link" />
+    </a>
+    <a class="admin-btn-ghost inline-flex items-center gap-1" target="_blank" href="https://github.com/hussain-a-abs">
       Github
-    </button>
+      <i-tabler name="external-link" />
+    </a>
   </div>
-
-
 </div>

@@ -1,1 +1,17 @@
-<p>admin works!</p>
+<div class="surface-page min-h-screen">
+  <div class="w-full border-b divider surface-page px-6 py-3 flex items-center sticky top-0 z-10">
+    <a routerLink="/"
+       class="flex items-center gap-1.5 text-muted hover:text-accent transition-colors">
+      <i-tabler name="arrow-left" class="w-4 h-4" />
+      Back
+    </a>
+    <span class="text-subheading absolute left-1/2 -translate-x-1/2">
+      Admin
+    </span>
+  </div>
+  <div class="max-w-2xl mx-auto px-6 py-10 flex flex-col gap-6">
+    @for (proj of data.projects(); track $index) {
+      <app-project-form [project]="proj" />
+    }
+  </div>
+</div>

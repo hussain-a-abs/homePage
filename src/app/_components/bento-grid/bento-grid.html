@@ -1,10 +1,16 @@
-<!-- portfolio-page.component.html -->
-<div class=" bg-page-bg flex justify-center px-6 py-10">
+<div class="surface-page flex justify-center ">
   <div class="w-full max-w-4xl">
-<div class="bento-grid">
-  <app-hero-tile slot="hero" />
-  <app-projects-tile slot="projects"></app-projects-tile>
-</div>
+    <div class="bento-grid">
+      <app-hero-tile class="bento-hero" />
+      <app-projects-tile slot="projects" />
+      @for (cert of data.certs(); track $index) {
+        <app-certs-tile  [cert]="cert"></app-certs-tile>
+      }
+      <app-stack-tile ></app-stack-tile>
+      @if(data.availability()){
+        <app-work-availability-tile slot="availability" [availability]="data.availability()!"></app-work-availability-tile>
+      }
+      <!-- todo: add the rest of the tiles -->
+    </div>
   </div>
 </div>
-

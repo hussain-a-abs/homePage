@@ -1,1 +1,18 @@
-<p>certs-tile works!</p>
+<div class="surface-base rounded-tile p-4 flex flex-col gap-3 h-full">
+  <div class="w-8 h-8 rounded-md surface-accent flex items-center justify-center">
+    <i-tabler [name]="cert.icon" class="text-[15px] text-accent" />
+  </div>
+
+  <div>
+    <a class="text-subheading inline-flex items-center gap-0.5" target="_blank" [href]="cert.link">{{ cert.title }} <i-tabler name="external-link"></i-tabler> </a>
+    <p class="text-caption">{{ cert.subtitle }}</p>
+  </div>
+
+  <div class="flex flex-wrap gap-1">
+    @for (chip of cert.chips; track chip; let i = $index) {
+      <app-chip [index]="i">{{ chip.name }}</app-chip>
+    }
+  </div>
+
+  <p class="text-muted mt-auto">{{ cert.date.toDate().toLocaleDateString('en', {month: 'short', year: 'numeric'}) }}</p>
+</div>

@@ -1,0 +1,2 @@
+Deploy to preview: 
+firebase deploy --only hosting:preview-hussainabs

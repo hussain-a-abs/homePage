@@ -4,32 +4,35 @@ import { Component, computed, Input } from '@angular/core';
   selector: 'app-chip',
   imports: [],
   template: `
-    <span [class]="classes()">
+    <span [class]="classes()" class="">
       <ng-content />
     </span>
   `,
-  styles: '',
 })
 export class Chip {
   @Input() variant: 'light' | 'dark' = 'light';
-  @Input() color: 'blue' | 'purple' | 'teal' | 'amber' = 'blue';
+  @Input() index = 0;
+
+  private readonly cycle: Array<'blue' | 'purple' | 'teal' | 'amber'> =
+    ['blue', 'purple', 'teal', 'amber'];
 
   private lightMap = {
-    blue: 'bg-pill-blue-bg text-pill-blue-text',
+    blue:   'bg-pill-blue-bg text-pill-blue-text',
     purple: 'bg-pill-purple-bg text-pill-purple-text',
-    teal: 'bg-pill-teal-bg text-pill-teal-text',
-    amber: 'bg-pill-amber-bg text-pill-amber-text',
+    teal:   'bg-pill-teal-bg text-pill-teal-text',
+    amber:  'bg-pill-amber-bg text-pill-amber-text',
   };
 
   private darkMap = {
-    blue: 'bg-accent-dim text-accent',
-    purple: 'bg-[#1e1a3a] text-[#a78bfa]',
-    teal: 'bg-[#0e2a24] text-[#5dcaa5]',
-    amber: 'bg-[#2a1e0e] text-[#e8a060]',
+    blue:   'bg-pill-dark-blue-bg text-pill-dark-blue-text',
+    purple: 'bg-pill-dark-purple-bg text-pill-dark-purple-text',
+    teal:   'bg-pill-dark-teal-bg text-pill-dark-teal-text',
+    amber:  'bg-pill-dark-amber-bg text-pill-dark-amber-text',
   };
 
   classes = computed(() => {
     const map = this.variant === 'dark' ? this.darkMap : this.lightMap;
-    return `${map[this.color]} text-[10px] px-2 py-0.5 rounded-full me-1`;
+    const color = this.cycle[this.index % this.cycle.length];
+    return `${map[color]} text-[10px] px-2 py-0.5 rounded-full me-1`;
   });
 }
