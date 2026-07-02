@@ -4,4 +4,4 @@ A full-stack Angular SSR application built to showcase my projects and technical
 
 You can view the full project write-up here:
 
-👉 **[hussainabs.com](https://hussainabs.com)**
+👉 **[hussainabs.com/project/homepage-project](https://hussainabs.com/project/homepage-project)**
