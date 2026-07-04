@@ -5,10 +5,11 @@ import { DataService } from '../../_data/data-service';
 import { StackTile } from "../stack-tile/stack-tile";
 import { CertsTile } from "../certs-tile/certs-tile";
 import { WorkAvailabilityTile } from "../work-availability-tile/work-availability-tile";
+import { GithubActivityTile } from "../github-activity-tile/github-activity-tile";
 
 @Component({
   selector: 'app-bento-grid',
-  imports: [HeroTile, ProjectsTile, StackTile, CertsTile, WorkAvailabilityTile],
+  imports: [HeroTile, ProjectsTile, StackTile, CertsTile, WorkAvailabilityTile, GithubActivityTile],
   templateUrl: './bento-grid.html',
   styleUrl: './bento-grid.css',
 })
@@ -16,10 +17,7 @@ export class BentoGrid implements OnInit {
   data = inject(DataService);
   
   async ngOnInit(): Promise<void> {
-    this.data.fetchProjects();
-    this.data.fetchStackChips();
-    this.data.fetchCerts();
-    this.data.fetchAvailability();
+    
   }
 
 }
