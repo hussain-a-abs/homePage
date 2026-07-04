@@ -8,7 +8,7 @@ import { map, take } from 'rxjs';
   selector: 'app-github-activity-tile',
   imports: [],
   templateUrl: './github-activity-tile.html',
-  styleUrl: './github-activity-tile.css',
+  styles: ``,
 })
 export class GithubActivityTile implements AfterViewInit {
   currentDate = new Date();

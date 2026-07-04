@@ -8,7 +8,7 @@ import { DataService } from '../../_data/data-service';
   selector: 'app-projects-tile',
   imports: [ProjectRow],
   templateUrl: './projects-tile.html',
-  styleUrl: './projects-tile.css',
+  styles: ``,
   host: {
   }
 })
