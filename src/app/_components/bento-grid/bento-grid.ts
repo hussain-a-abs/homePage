@@ -6,10 +6,11 @@ import { StackTile } from "../stack-tile/stack-tile";
 import { CertsTile } from "../certs-tile/certs-tile";
 import { WorkAvailabilityTile } from "../work-availability-tile/work-availability-tile";
 import { GithubActivityTile } from "../github-activity-tile/github-activity-tile";
+import { ContactTile } from '../contact-tile/contact-tile';
 
 @Component({
   selector: 'app-bento-grid',
-  imports: [HeroTile, ProjectsTile, StackTile, CertsTile, WorkAvailabilityTile, GithubActivityTile],
+  imports: [HeroTile, ProjectsTile, StackTile, CertsTile, WorkAvailabilityTile, GithubActivityTile, ContactTile],
   templateUrl: './bento-grid.html',
   styleUrl: './bento-grid.css',
 })

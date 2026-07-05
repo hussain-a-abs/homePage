@@ -15,7 +15,6 @@ export class GithubActivityTile implements AfterViewInit {
   private http = inject(HttpClient);
   weeks = computed(() => {
     let currentDate = new Date();
-    let cutoffDate = new Date().setMonth(currentDate.getMonth()-2)
     const days = this.contribs()?.contributions.filter(i => i.date.startsWith(currentDate.getFullYear().toString())) ?? [];
     const chunks = [];
     for (let i = 0; i < days.length; i += 7)
