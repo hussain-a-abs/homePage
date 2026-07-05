@@ -1,3 +1,8 @@
+// for dev environment - cloud service env configured with secret so this wont run
+if (!process.env['DISCORD_URL']) {
+  require('dotenv').config();
+}
+
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
@@ -23,6 +28,35 @@ const angularApp = new AngularNodeAppEngine();
  * });
  * ```
  */
+
+app.post('/api/contactForm', express.json(), async (req, res) => {
+  const discordWebhook = process.env['DISCORD_URL'];
+  if (!discordWebhook) {
+    return res.status(500).json({ error: 'Webhook URL not configured' });
+  }
+
+  const contactForm = req.body;
+  const message = {
+    content: `**Email:** ${contactForm.email}\n**Subject:** ${contactForm.subject}\n**Message:** ${contactForm.message}`
+  };
+
+  try {
+    const response = await fetch(discordWebhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(message)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      return res.status(response.status).json({ error: errorText });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    return res.status(500).json({ error: error instanceof Error ? error.message : error });
+  }
+})
 
 /**
  * Serve static files from /browser

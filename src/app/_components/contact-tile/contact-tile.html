@@ -1,1 +1,54 @@
-<p>contact-tile works!</p>
+<div class="surface-base rounded-tile p-4 flex flex-col gap-3 h-full bento-hero">
+    <p class="text-label">GET IN TOUCH</p>
+
+    @if (sent()) {
+    <div class="flex flex-col items-center justify-center flex-1 gap-2">
+        <i-tabler name="circle-check" class=" text-dot-3" />
+        <p class="text-body">Message sent!</p>
+        <button class="text-muted hover:text-accent transition-colors" (click)="sent.set(false)">Send another</button>
+    </div>
+    } @else {
+    <form [formGroup]="form" class="flex flex-col gap-2.5">
+
+        <div class="grid grid-cols-2 gap-2">
+            <div class="admin-field">
+                <label class="admin-label">Email</label>
+                <input type="email" class="admin-input" formControlName="email" placeholder="you@example.com" />
+                @if (form.controls['email'].invalid && form.controls['email'].touched) {
+                <span class="text-muted text-danger">Valid email required</span>
+                }
+            </div>
+            <div class="admin-field">
+                <label class="admin-label">Subject</label>
+                <input type="text" class="admin-input" formControlName="subject" placeholder="Subject..." />
+                @if (form.controls['subject'].invalid && form.controls['subject'].touched) {
+                <span class="text-muted text-danger">Required</span>
+                }
+            </div>
+        </div>
+
+        <div class="admin-field">
+            <label class="admin-label">Message</label>
+            <textarea class="admin-textarea" rows="3" formControlName="message"
+                placeholder="Your message goes here..."></textarea>
+            @if (form.controls['message'].invalid && form.controls['message'].touched) {
+            <span class="text-muted text-danger">Required</span>
+            }
+        </div>
+
+        @if (error()) {
+        <span class="text-muted text-danger">Something went wrong. Try again.</span>
+        }
+
+        <button type="button" class="admin-btn-ghost w-full flex items-center justify-center gap-2 mt-1"
+            [disabled]="sending()" (click)="submit()">
+            @if (sending()) {
+            Sending...
+            } @else {
+            <i-tabler name="send" class="" /> Send message
+            }
+        </button>
+
+    </form>
+    }
+</div>

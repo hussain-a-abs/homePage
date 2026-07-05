@@ -8,7 +8,7 @@ import { DataService } from '../../_data/data-service';
   selector: 'app-hero-tile',
   imports: [Chip, TablerIconComponent],
   templateUrl: './hero-tile.html',
-  styleUrl: './hero-tile.css',
+  styles: ``,
   providers: [
     provideTablerIcons({
       IconExternalLink

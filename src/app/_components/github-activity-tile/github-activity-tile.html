@@ -1,8 +1,18 @@
-<div class="bg-tile-bg border border-tile-border rounded-tile p-4 flex flex-col gap-3">
-      <p class="text-tile-text text-xs ">GITHUB ACTIVITY</p>
+<div class="surface-base rounded-tile p-4 flex flex-col gap-3 h-full bento-hero">
+      <p class="text-label">GITHUB ACTIVITY</p>
+      <div #ghGrid class="flex flex-wrap ">
+            <div class="flex flex-row flex-wrap gap-0.5">
+                  @for (week of weeks(); track $index) {
+                  <div class="flex gap-0.5">
+                        @for (day of week; track day.date) {
+                        <div class="w-2.5 h-2.5 rounded-sm hover:bg-primary hover:border-2 transition-colors"
+                              [style.background]="getColor(day.level)" [title]="day.date + ' commits: ' + day.count">
 
-      <div>
-        
+                        </div>
+                        }
+                  </div>
+                  }
+            </div>
+            <p class="text-muted mt-auto pt-1">Total this year: {{totalThisYear()}}</p>
       </div>
-
 </div>

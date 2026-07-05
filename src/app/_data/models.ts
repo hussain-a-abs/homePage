@@ -45,3 +45,13 @@ export interface HeroTileInfo {
     title: string;
     description: string;
 }
+
+export interface GithubActivity {
+    total: any;
+
+    contributions: {
+        date: string;
+        count: number;
+        level: number;
+    } [],
+}

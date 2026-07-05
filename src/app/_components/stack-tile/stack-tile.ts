@@ -6,7 +6,7 @@ import { Chip } from "../_reusable/chip/chip";
   selector: 'app-stack-tile',
   imports: [Chip],
   templateUrl: './stack-tile.html',
-  styleUrl: './stack-tile.css',
+  styles: ``,
 })
 export class StackTile {
   data = inject(DataService)

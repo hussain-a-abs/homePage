@@ -8,7 +8,7 @@ import { IconCloud, IconShieldCheck, IconServer, IconDatabase, IconExternalLink 
   selector: 'app-certs-tile',
   imports: [Chip, TablerIconComponent],
   templateUrl: './certs-tile.html',
-  styleUrl: './certs-tile.css',
+  styles: ``,
   providers: [
     provideTablerIcons({
       IconCloud,
