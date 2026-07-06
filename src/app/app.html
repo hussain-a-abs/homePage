@@ -1,3 +1,11 @@
 <div class="min-h-screen bg-page-bg p-4">
+  @if (!data.isAllDone()) {
+  <div class="fullscreen-loader">
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <p class="text-subheading">Loading tiles...</p>
+    </div>
+  </div>
+}
   <router-outlet />
 </div>
