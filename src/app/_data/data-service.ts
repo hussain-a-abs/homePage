@@ -1,21 +1,32 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { FirebaseService } from './firebase-service';
 import { collection, DocumentReference, DocumentSnapshot, getDoc, getDocs, query, Timestamp, where } from 'firebase/firestore';
 import { FIRESTORE_CONSTANTS } from './constants';
-import { Availability, Certification, Chip, HeroTileInfo, Project } from './models';
+import { Availability, Certification, Chip, GithubActivity, HeroTileInfo, Project } from './models';
+import { HttpClient } from '@angular/common/http';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   private fb = inject(FirebaseService);
+  private http = inject(HttpClient);
+  public githubContribs = toSignal(
+    this.http.get<GithubActivity>('https://github-contributions-api.jogruber.de/v4/hussain-a-abs')
+  )
   public projects = signal<Project[] | null>(null);
   public stackChips = signal<Chip[] | null>(null);
   public certs = signal<Certification[] | null>(null);
   public availability = signal<Availability | null>(null);
   public info = signal<HeroTileInfo | null>(null);
 
-  constructor(){
+  public isAllDone = computed(() => {
+    return this.projects() != null && this.stackChips() != null && this.certs() != null
+      && this.availability() != null && this.info() != null && this.githubContribs() != undefined
+  })
+
+  constructor() {
     this.fetchAvailability();
     this.fetchCerts();
     this.fetchHeroInfo();
@@ -95,11 +106,11 @@ export class DataService {
     return (snapshot.empty) ? null : { ...snapshot.docs[0].data(), id: snapshot.docs[0].id } as Project;
   }
 
-  async fetchHeroInfo(){
+  async fetchHeroInfo() {
     const collectionRef = collection(this.fb.firestore, FIRESTORE_CONSTANTS.HERO_INFO_COLLECTION);
     const q = query(collectionRef);
     const doc = (await getDocs(q)).docs[0];
-    this.info.set({...doc.data(), id: doc.id} as HeroTileInfo);
+    this.info.set({ ...doc.data(), id: doc.id } as HeroTileInfo);
   }
 
 }
