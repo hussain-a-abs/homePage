@@ -43,3 +43,15 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 .firebase/hosting.cHVibGlj.cache
+
+# Secrets
+.env
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+tfPlan.txt
