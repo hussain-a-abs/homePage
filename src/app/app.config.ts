@@ -10,6 +10,10 @@ initializeApp({
   apiKey: "AIzaSyBXnz-zWuZ6XTL3IKnWfIedXgG8sSEvpkA",
   authDomain: "portfolio-project-500120.firebaseapp.com",
   projectId: "portfolio-project-500120",
+  storageBucket: "portfolio-project-500120.firebasestorage.app",
+  messagingSenderId: "627392119020",
+  appId: "1:627392119020:web:c257faf77aa64b4f2165c9",
+  measurementId: "G-LSDYZQH824",
 });
 
 export const appConfig: ApplicationConfig = {
