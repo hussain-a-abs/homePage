@@ -1,12 +1,12 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
-
+import { initializeAnalytics } from 'firebase/analytics';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { initializeApp } from 'firebase/app';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
-initializeApp({
+const fbapp = initializeApp({
   apiKey: "AIzaSyBXnz-zWuZ6XTL3IKnWfIedXgG8sSEvpkA",
   authDomain: "portfolio-project-500120.firebaseapp.com",
   projectId: "portfolio-project-500120",
@@ -15,6 +15,7 @@ initializeApp({
   appId: "1:627392119020:web:c257faf77aa64b4f2165c9",
   measurementId: "G-LSDYZQH824",
 });
+initializeAnalytics(fbapp, {config: {}});
 
 export const appConfig: ApplicationConfig = {
   providers: [
